@@ -18,6 +18,7 @@ var Game = {
   ctx: null,
   ctx2: null,
   status: false,
+  bonusTime: false,
 
   setDifficultyLevel: function(level) {
     this.difficultyLevel = level;
@@ -35,6 +36,18 @@ var Game = {
 
   _setReductionPlayer: function() {
     this.player.radius -= this.radiusReduction;
+  },
+
+  _setBonusTime: function() {
+    Game.bonusTime = true; 
+    this.radiusReduction = 0.00,
+    Game._generateItemsCoins();
+    setTimeout (function(){
+      this.itemsGame.splice(this.itemsGame.findIndex(itemGame => itemGame.effect === "coin"));
+      console.log(this.itemGame);
+      this.radiusReduction = 0.02,
+      Game.bonusTime = false;   
+    }.bind(this), 4000)
   },
 
   _setTextGame: function() {
@@ -84,6 +97,24 @@ var Game = {
     });
   },
 
+  _generateItemsCoins: function() {
+    for (var i = 0; i < 100; i++) {
+      this.itemsGame.push(
+        new ItemGame(
+          this.ctx2,
+          Math.random() * (window.innerWidth - 100 - 100) + 100,
+          Math.random() * (window.innerHeight - 100) + 100,
+          5,
+          5,
+          10,
+          "coin",
+          3
+        )
+      );
+    } 
+ 
+  },
+
   _generateItemsGrow: function() {
     this.itemsGame.push(
       new ItemGame(
@@ -129,7 +160,23 @@ var Game = {
     );
   },
 
+  _generateItemBonusCoins: function() {
+    this.itemsGame.push(
+      new ItemGame(
+        this.ctx2,
+        Math.random() * (window.innerWidth - 100 - 100) + 100,
+        Math.random() * (window.innerHeight - 100) + 100,
+        15,
+        15,
+        30,
+        "bonusCoin",
+        3
+      )
+    );
+  },
+
   _generateDataModel: function() {
+    
     this.score += 0.2;
     this.frameCounter++;
 
@@ -137,7 +184,15 @@ var Game = {
       this._generateEnemies();
     }
 
-    if (this.frameCounter % 30 == 0) {
+    // if (this.itemsGame.filter(function(item) {
+    //   return item.effect.includes('coin');
+    // }).length <50) {
+    //   if (this.frameCounter % 30 == 0) {
+    //     this._generateItemsCoins();
+    //   }
+    // }
+
+    if (this.frameCounter % 20 == 0) {
       this._generateItemsGrow();
     }
 
@@ -149,13 +204,13 @@ var Game = {
       this._generateItemSuper();
     }
 
-    // if (this.frameCounter % 1000 == 0) {
-    //   this.player.radius += 10;
-    // }
+    if (this.frameCounter % 1200 == 0) {
+      this._generateItemBonusCoins();
+    }
 
-    if (this.frameCounter % 500 == 0) {
+    if (this.frameCounter % 800 == 0) {
       if (this.generateEnemiesFrames > 10) {
-        this.generateEnemiesFrames -= 10;
+        this.generateEnemiesFrames -= 5;
       }
     }
 
@@ -192,6 +247,16 @@ var Game = {
     for (var i = 0; i < this.itemsGame.length; i++) {
       this.itemsGame[i].draw();
       if (this.itemsGame[i].radius < 10 || this.itemsGame[i].hit === true) {
+        if (this.itemsGame[i].effect === 'coin') {
+          this.textScores.push(
+            new ScoreText(
+              this.ctx,
+              this.itemsGame[i].x,
+              this.itemsGame[i].y,
+              10
+            )
+          );
+        }
         this.itemsGame.splice(i, 1);
       }
     }
@@ -228,6 +293,7 @@ var Game = {
   },
 
   _paintDataModel: function() {
+
     this.textGame.draw(this.score, this.player.numberOfBullets);
 
     this.itemsGame.forEach(

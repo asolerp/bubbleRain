@@ -12,13 +12,13 @@ function ScoreText(ctx, x, y, score) {
   }
   
   ScoreText.prototype.drawScore = function() {
-    console.log(this.scoreToText);
+  
     this.lifeTime -= this.lifeTimeReduction;
 
     if (this.lifeTime > 0) {
 
         this.ctx.beginPath();
-        this.ctx.font = `20px Orbitron`;
+        this.ctx.font = `30px Orbitron`;
         this.ctx.fillStyle = `black`;
         this.ctx.shadowColor = `black`;
         this.ctx.fillStyle = `black`;

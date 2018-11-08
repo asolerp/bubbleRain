@@ -2,7 +2,7 @@ function ItemGame(ctx, x, y, w, h, frames, effect, color) {
   
   this.ctx2 = ctx;
   this.color = color;
-  this.colors = ["#A68403",'#36B1BF', '#F12522'];
+  this.colors = ["#A68403",'#36B1BF', '#F12522', '#FF0DFF'];
 
   this.x = x;
   this.y = y;
@@ -10,13 +10,8 @@ function ItemGame(ctx, x, y, w, h, frames, effect, color) {
   this.h = h;
 
   this.effect = effect;
-  this.img = new Image();
   this.hit = false;
 
-  this.img.frames = frames;
-  this.img.frameIndex = 0;
-
-  this.damage;
   this.radius = this.w * 3;
   this.radiusReducton = 0.05;
   this.deg = 0;
@@ -31,6 +26,9 @@ ItemGame.prototype.draw = function() {
 
 ItemGame.prototype.assignValuesEffect = function(effect) {
   switch (effect) {
+    case "coin":
+      this.radiusReducton = 0.00;
+      break;
     case "grow":
       this.radiusReducton = 0.08;
       break;
@@ -39,21 +37,31 @@ ItemGame.prototype.assignValuesEffect = function(effect) {
       break;
     case 'super':
       this.radiusReducton = 0.1;
+      break;
+    case 'bonusCoin':
+      this.radiusReducton = 0.2;
+      break;
   }
 };
 
 ItemGame.prototype.effectCollision = function(effect) {
   switch (effect) {
+    case 'coin':
+      Game.score += 10;
+      break;
     case "grow":
       if (Game.player.radius < 30) {
         Game.player.radius += 4;
       }
       break;
-      case "munition":
+    case "munition":
       Game.player.numberOfBullets += 15;
       break;
-      case 'super':
+    case 'super':
       Game.player.bullet.changeShoot();
+      break;
+    case 'bonusCoin':
+      Game._setBonusTime();
       break;
   }
 };

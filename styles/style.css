@@ -58,6 +58,7 @@ canvas {
 }
 
 #yourScore {
+    width: 600px;
     text-align: center;
     padding: 20px;
     background-color: rgba(216, 216, 216, 0.8);

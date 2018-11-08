@@ -1,7 +1,7 @@
 function Text(ctx) {
   
     this.ctx = ctx;
-    this.colors = ["#A68403",'#36B1BF', '#F12522'];
+    this.colors = ["#A68403",'#36B1BF', '#F12522', '#FF0DFF'];
     this.deg = 0;
 
   }
@@ -9,12 +9,13 @@ function Text(ctx) {
   Text.prototype.draw = function(score, bullets) {
 
     this.ctx.beginPath();
-    this.drawText('Tron', 50, 'black', 2, 'Bubble Rain', window.innerWidth/2 - 290, 100),
-    this.drawText('Orbitron', 25 , 'black', 2, `YOUR SCORE IS: ${Math.floor(score)}`, window.innerWidth/2 - 180, window.innerHeight - 50),
+    this.drawText('Tron', 50, 'black', 2, 'Bubble Rain', window.innerWidth/2 - 300, 100),
+    this.drawText('Orbitron', 25 , 'black', 2, `YOUR SCORE IS: ${Math.floor(score)}`, window.innerWidth/2 - 190, window.innerHeight - 50),
     this.drawText('Orbitron', 25 , 'black', 2, `BULLETS: ${bullets}`, 10,40),
-    this.drawLegend(0, window.innerWidth - 50, 50,10,10,20, 'Grow', 4)
-    this.drawLegend(1, window.innerWidth - 50, 100,10,10,20, 'Munition', 8)
-    this.drawLegend(2, window.innerWidth - 50, 150,10,10,20, '   Super', 8)
+    this.drawLegend(3, window.innerWidth - 50, 50,10,10,20, '     Coin', 8)
+    this.drawLegend(0, window.innerWidth - 50, 100,10,10,20, 'Grow', 4)
+    this.drawLegend(1, window.innerWidth - 50, 150,10,10,20, 'Munition', 8)
+    this.drawLegend(2, window.innerWidth - 50, 200,10,10,20, '   Super', 8)
     this.ctx.closePath();
     
   }
