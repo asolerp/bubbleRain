@@ -12,8 +12,9 @@ Get the gold bolls and grow up! And do not forget to reload your gun.
 
 HTML, CSS, JS
 
-## Contributing
+## Game
 
+https://asolerp.github.io/bubbleRain/
 
 ## Authors
 

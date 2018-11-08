@@ -1,9 +1,7 @@
 window.onload = function() {
 
-  var song = new MySound("audio/tron2.mp3");
-
   Game.init();
-  song.play();
+  
 
   var topTenArray = [];
 

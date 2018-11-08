@@ -39,7 +39,7 @@ ItemGame.prototype.assignValuesEffect = function(effect) {
       this.radiusReducton = 0.1;
       break;
     case 'bonusCoin':
-      this.radiusReducton = 0.2;
+      this.radiusReducton = 0.15;
       break;
   }
 };

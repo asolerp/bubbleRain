@@ -1,6 +1,10 @@
+var song = new MySound("audio/tron2.mp3");
+
 var Game = {
 
   version: "1.0",
+  soundTrack: null,
+  bonusTrack: null,
   difficultyLevel: null,
   idInterval: null,
   ballEnemies: [],
@@ -41,13 +45,17 @@ var Game = {
   _setBonusTime: function() {
     Game.bonusTime = true; 
     this.radiusReduction = 0.00,
+    this.player.radius = 30,
+    this.soundTrack.pause();
+    this.bonusTrack.play();
     Game._generateItemsCoins();
     setTimeout (function(){
+      this.soundTrack.play();
+      this.bonusTrack.pause();
       this.itemsGame.splice(this.itemsGame.findIndex(itemGame => itemGame.effect === "coin"));
-      console.log(this.itemGame);
       this.radiusReduction = 0.02,
       Game.bonusTime = false;   
-    }.bind(this), 4000)
+    }.bind(this), 7000)
   },
 
   _setTextGame: function() {
@@ -76,11 +84,11 @@ var Game = {
       }
     } else {
       if (randomY === 0) {
-        this.ballEnemies.push(new Enemy(ths.ctx, radius, x[1], y[0]));
+        this.ballEnemies.push(new Enemy(this.ctx, radius, x[1], y[0]));
       } else if (randomY === 1) {
-        this.ballEnemies.push(new Enemy(ths.ctx, radius, x[0], y[1]));
+        this.ballEnemies.push(new Enemy(this.ctx, radius, x[0], y[1]));
       } else if (randomY === 2) {
-        this.ballEnemies.push(new Enemy(ths.ctx, radius, x[1], y[2]));
+        this.ballEnemies.push(new Enemy(this.ctx, radius, x[1], y[2]));
       }
     }
   },
@@ -184,19 +192,11 @@ var Game = {
       this._generateEnemies();
     }
 
-    // if (this.itemsGame.filter(function(item) {
-    //   return item.effect.includes('coin');
-    // }).length <50) {
-    //   if (this.frameCounter % 30 == 0) {
-    //     this._generateItemsCoins();
-    //   }
-    // }
-
     if (this.frameCounter % 20 == 0) {
       this._generateItemsGrow();
     }
 
-    if (this.frameCounter % 100 == 0) {
+    if (this.frameCounter % 70 == 0) {
       this._generateItemMunition();
     }
 
@@ -363,9 +363,14 @@ var Game = {
   },
 
   init: function() {
+
     this.ctx = this.canvas.getContext("2d");
     this.ctx2 = this.canvas.getContext("2d");
     this.player = new Player(this.ctx);
+    this.soundTrack = new MySound("audio/tron2.mp3");
+    this.bonusTrack = new MySound("audio/countDown.wav");
+
+    this.soundTrack.play();
     this._setCanvasDimensions();
     this._setTextGame();
     this._repeatOften();
