@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bubble Rain</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link rel="stylesheet" href="styles/animate.min.css"> 
+    <link rel="stylesheet" href="styles/normalize.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+  
+</head>
+<body>
+    <script src="src/libraries/jquery.min.js"></script>
+    <script src="src/libraries/animatedModal.js"></script>
+    
+    <div>
+        <canvas id="bubbleRain"></canvas>
+        <img class="startGame" src="images/startButton.png"/>
+        <img id="info" class="infoGame" href="#animatedModal" src="images/infoButton.png"/>
+    </div>
+
+
+    <div id="animatedModal">
+        <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
+        <div class="close-animatedModal"> 
+            CLOSE
+        </div>
+            
+        <div class="modal-content">
+                <h1>How To Play</h1>
+                <p>Survive as much as you can!! You are getting small, get the different items to keep going and reach the glory.</p>
+                <p>Get the gold bolls and grow up! And do not forget to reload your gun</p>
+                <img src="images/keyboard.png" alt="">
+        </div>
+    </div>
+
+    <div id="yourScore">        
+        <div class="modal-content">
+                <h1 style="margin-bottom: 30px;">Save your score</h1>
+                <p class="finalScore"></p>
+                <input type="text" name="" id="inputName" placeholder="Put your name">
+                <button id="scoreButton">Save</button>
+        </div>
+        <div class="topTenScores">
+            <ul></ul>
+        </div>
+    </div>
+
+
+<!--   
+    <script src="src/weapon.js"></script>
+    <script src="src/scoreText.js"></script>
+  
+    <script src="src/enemy.js"></script>
+    <script src="src/object.js"></script>
+    
+    <script src="src/character.js"></script>
+    <script src="src/song.js"></script>
+    <script src="src/game.js"></script> -->
+    
+    <script src="src/weapon.js"></script>
+    <script src="src/scoreText.js"></script>
+    <script src="src/text.js"></script>
+    <script src="src/song.js"></script>
+    <script src="src/player.js"></script>
+    <script src="src/enemy.js"></script>
+    <script src="src/itemsGame.js"></script>
+    <script src="src/bubbleRain.js"></script>
+    <script src="src/index.js"></script>
+    <script src="src/math.js";></script>
+    <script src="src/utils.js";></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,130 @@
+@font-face {
+    font-family: 'Tron';
+    src: url('../fonts/TRON.TTF');
+}
+
+textarea:focus, input:focus{ outline: none; } 
+
+html, body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+canvas {
+    background: url('../images/back.jpg');
+    background-size: 100%;
+    /* animation: Gradient 15s ease infinite; */
+    position: absolute;
+}
+
+.modal-content{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content img {
+    width: 1000px;
+    margin-top: 100px;
+}
+
+.animatedModal h1 {
+    font-family: 'Tron';
+    font-size: 50px;
+}
+
+.close-animatedModal {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.modal-content p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.startGame {
+    width: 200px;
+    position: absolute;
+    z-index: 1;
+    top: 60%;
+    left: 36.5%;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+}
+
+#yourScore {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(216, 216, 216, 0.8);
+    border: 0px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    left: 30%;
+}
+
+#yourScore ul {
+    margin-top: 20px;
+}
+
+#yourScore ul li {
+    list-style-type: none;
+}
+
+.infoGame {
+    width: 200px;
+    position: absolute;
+    z-index: 1;
+    top: 60%;
+    left: 48.5%;
+    animation-name: spin2;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+}
+
+
+#spaceNinja {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+}
+
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes spin2 {
+    from {
+        transform:rotate(360deg);
+    }
+    to {
+        transform:rotate(0deg);
+    }
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
