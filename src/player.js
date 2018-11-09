@@ -30,6 +30,11 @@ function Player(ctx) {
 
   this.view = "Front";
 
+  this.color = 0;
+
+  this.shadowColors = ["#3ef2f2",'#e55b5b',, '#ff7cff'];
+  this.colors = ['black', '#F12522', '#FF0DFF'];
+
   // this.weapon = new Weapon(this);
   this.typeOfShoot = "normal";
   
@@ -84,12 +89,12 @@ Player.prototype.setListeners = function() {
 
 Player.prototype.draw = function() {
   
-  // this.radius -= this.radiusReduction;
+    console.log(this.shadowColors[this.color]);
     
     this.ctx.beginPath();
-    this.ctx.shadowColor = "#3ef2f2";
-    this.ctx.strokeStyle = "#3ef2f2";
-    this.ctx.fillStyle = "black";
+    this.ctx.shadowColor = this.shadowColors[this.color];
+    this.ctx.strokeStyle = this.shadowColors[this.color];
+    this.ctx.fillStyle = this.colors[this.color];
     this.ctx.shadowBlur = 10;
     this.ctx.shadowOffsetX = 0;
     this.ctx.shadowOffsetY = 0;

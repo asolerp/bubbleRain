@@ -46,6 +46,7 @@ var Game = {
   _setBonusTime: function() {
     Game.bonusTime = true; 
     this.radiusReduction = 0.00,
+    this.player.color = 2,
     this.player.radius = 30,
     console.log('parar')
     this.soundTrack.pause();
@@ -56,6 +57,7 @@ var Game = {
       this.soundTrack.play();
       this.bonusTrack.pause();
       this.itemsGame.splice(this.itemsGame.findIndex(itemGame => itemGame.effect === "coin"));
+      this.player.color = 0;
       this.radiusReduction = 0.02,
       Game.bonusTime = false;   
     }.bind(this), 7000)
@@ -196,35 +198,40 @@ var Game = {
     this.score += 0.2;
     this.frameCounter++;
 
-    if (this.frameCounter % this.generateEnemiesFrames == 0) {
-      this._generateEnemies();
-    }
+    if (!Game.bonusTime) {
 
-    if (this.frameCounter % 20 == 0) {
-      this._generateItemsGrow();
-    }
-
-    if (this.frameCounter % 70 == 0) {
-      this._generateItemMunition();
-    }
-
-    if (this.frameCounter % 1000 == 0) {
-      this._generateItemSuper();
-    }
-
-    if (this.frameCounter % 600 == 0) {
-      this._generateItemBonusCoins();
-    }
-
-    if (this.frameCounter % 800 == 0) {
-      if (this.generateEnemiesFrames > 10) {
-        this.generateEnemiesFrames -= 5;
+      if (this.frameCounter % this.generateEnemiesFrames == 0) {
+        this._generateEnemies();
+      }
+  
+      if (this.frameCounter % 20 == 0) {
+        this._generateItemsGrow();
+      }
+  
+      if (this.frameCounter % 70 == 0) {
+        this._generateItemMunition();
+      }
+  
+      if (this.frameCounter % 1000 == 0) {
+        this._generateItemSuper();
+      }
+  
+      if (this.frameCounter % 600 == 0) {
+        this._generateItemBonusCoins();
+      }
+  
+      if (this.frameCounter % 800 == 0) {
+        if (this.generateEnemiesFrames > 10) {
+          this.generateEnemiesFrames -= 5;
+        }
+      }
+  
+      if (this.framesCounter > 1000) {
+        this.framesCounter = 0;
       }
     }
 
-    if (this.framesCounter > 1000) {
-      this.framesCounter = 0;
-    }
+   
   },
 
   _detectCollisions: function() {

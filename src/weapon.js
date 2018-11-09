@@ -48,9 +48,11 @@ function Weapon(ctx, x, y, w, h, side, typeOfShoot) {
   Weapon.prototype.changeShoot = function(){
 
     Game.player.typeOfShoot = 'super';
+    Game.player.color = 1;
 
     setTimeout(function(){
       Game.player.typeOfShoot = 'normal';
+      Game.player.color = 0;
     }.bind(this),5000)
     
   }
