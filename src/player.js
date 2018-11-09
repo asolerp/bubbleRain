@@ -87,10 +87,10 @@ Player.prototype.draw = function() {
   // this.radius -= this.radiusReduction;
     
     this.ctx.beginPath();
-    this.ctx.shadowColor = "black";
-    this.ctx.strokeStyle = "rgba(0,0,0,1)";
-    this.ctx.fillStyle = "Black";
-    this.ctx.shadowBlur = 5;
+    this.ctx.shadowColor = "#3ef2f2";
+    this.ctx.strokeStyle = "#3ef2f2";
+    this.ctx.fillStyle = "black";
+    this.ctx.shadowBlur = 10;
     this.ctx.shadowOffsetX = 0;
     this.ctx.shadowOffsetY = 0;
     this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);

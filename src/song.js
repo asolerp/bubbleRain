@@ -2,6 +2,7 @@ function MySound (src){
     
     this.sound = document.createElement('audio');
     this.sound.src = src;
+    this.sound.status = true;
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
@@ -13,6 +14,5 @@ function MySound (src){
         this.sound.pause();
     }
 }
-
 
 var shootSound = new MySound("audio/blaster.mp3");

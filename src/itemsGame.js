@@ -72,12 +72,15 @@ ItemGame.prototype.animateItemGame = function() {
   if (this.deg < 360) {
     if (Game.frameCounter % 1 === 0) {
       this.ctx2.beginPath();
+      this.ctx2.shadowColor = this.colors[this.color];
+      this.ctx2.shadowBlur = 5;
       this.ctx2.strokeStyle = this.colors[this.color];
       this.ctx2.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
       this.ctx2.stroke();
       this.ctx2.save();
       this.ctx2.translate(this.x, this.y);
       this.ctx2.rotate((this.deg * Math.PI) / 180);
+      this.ctx2.shadowBlur = 0;
       this.ctx2.fillStyle = this.colors[this.color];
       this.ctx2.shadowColor = this.colors[this.color];
       this.ctx2.strokeStyle = this.colors[this.color];

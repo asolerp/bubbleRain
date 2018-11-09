@@ -28,7 +28,7 @@ Enemy.prototype.draw = function() {
 Enemy.prototype.animation = function() {
   
   this.ctx.beginPath();
-  this.ctx.shadowColor = 'black';
+  this.ctx.shadowColor = '#ea923a';
   this.ctx.fillStyle = this.colors;
   this.ctx.shadowBlur = 10;
   this.ctx.shadowOffsetX = 0;
