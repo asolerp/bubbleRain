@@ -3,6 +3,7 @@ var song = new MySound("audio/tron2.mp3");
 var Game = {
 
   version: "1.0",
+  introTrack: null,
   soundTrack: null,
   bonusTrack: null,
   difficultyLevel: null,
@@ -46,6 +47,8 @@ var Game = {
     Game.bonusTime = true; 
     this.radiusReduction = 0.00,
     this.player.radius = 30,
+    console.log('parar')
+    this.soundTrack.pause();
     this.soundTrack.pause();
     this.bonusTrack.play();
     Game._generateItemsCoins();
@@ -103,6 +106,11 @@ var Game = {
 
       score.drawScore();
     });
+  },
+
+  _generateAllItems: function() {
+      this._generateItemsCoins();
+      this._generateItemsGrow()
   },
 
   _generateItemsCoins: function() {
@@ -204,7 +212,7 @@ var Game = {
       this._generateItemSuper();
     }
 
-    if (this.frameCounter % 1200 == 0) {
+    if (this.frameCounter % 600 == 0) {
       this._generateItemBonusCoins();
     }
 
@@ -367,10 +375,12 @@ var Game = {
     this.ctx = this.canvas.getContext("2d");
     this.ctx2 = this.canvas.getContext("2d");
     this.player = new Player(this.ctx);
-    this.soundTrack = new MySound("audio/tron2.mp3");
-    this.bonusTrack = new MySound("audio/countDown.wav");
 
-    this.soundTrack.play();
+    this.soundTrack = new MySound("audio/tron.mp3");
+    this.bonusTrack = new MySound("audio/countDown.wav");
+    this.introTrack = new MySound("audio/intro.mp3");
+
+    this.introTrack.play();
     this._setCanvasDimensions();
     this._setTextGame();
     this._repeatOften();

@@ -67,7 +67,7 @@ canvas {
     position: absolute;
     z-index: 1;
     top: 30%;
-    left: 30%;
+    left: 32%;
 }
 
 #yourScore ul {
@@ -76,6 +76,17 @@ canvas {
 
 #yourScore ul li {
     list-style-type: none;
+}
+
+.countDown {
+    font-family: 'Tron';
+    font-size: 120px;
+    width: 200px;
+    position: absolute;
+    z-index: 1;
+    top: 26%;
+    left: 43%;
+    z-index: 100;
 }
 
 .infoGame {

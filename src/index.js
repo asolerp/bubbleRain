@@ -30,11 +30,29 @@ window.onload = function() {
 
   $("#info").animatedModal({ color: "rgba(226, 226, 226, 0.95)" });
   $("#yourScore").hide();
+  // $(".countDown").hide();
 
-  var song = new MySound("audio/tron.mp3");
+  var countDownTrack = new MySound("audio/5sec.mp3");
 
   $(".startGame").click(function() {
-    Game.status = true;
+    Game.introTrack.pause();
+    countDownTrack.play();
+    $(".countDown").show();
+    var countDown = 5;
+
+    var startGame = setInterval(function(){
+      console.log(countDown);
+      $(".countDown").html(countDown);
+      countDown--;
+    },1450)
+
+    setTimeout(function(){
+      $(".countDown").hide();
+      clearInterval(startGame);
+      Game.status = true;
+      Game.soundTrack.play();
+    }, 8500)
+    
     // game.startedGame = true;
     $(".startGame").hide(100, "swing");
     $(".infoGame").hide(100, "swing");
