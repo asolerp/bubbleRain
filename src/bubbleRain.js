@@ -114,7 +114,7 @@ var Game = {
   },
 
   _generateItemsCoins: function() {
-    for (var i = 0; i < 40; i++) {
+    for (var i = 0; i < 20; i++) {
       this.itemsGame.push(
         new ItemGame(
           this.ctx2,
