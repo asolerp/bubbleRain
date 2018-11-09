@@ -2,7 +2,6 @@ window.onload = function() {
 
   Game.init();
   
-
   var topTenArray = [];
 
   Object.keys(localStorage).forEach(player => {

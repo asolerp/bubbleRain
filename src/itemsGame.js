@@ -47,7 +47,7 @@ ItemGame.prototype.assignValuesEffect = function(effect) {
 ItemGame.prototype.effectCollision = function(effect) {
   switch (effect) {
     case 'coin':
-      Game.score += 10;
+      Game.score += 50;
       break;
     case "grow":
       if (Game.player.radius < 30) {
