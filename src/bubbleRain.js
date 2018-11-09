@@ -362,8 +362,6 @@ var Game = {
     if (this.player.radius < 10) {
 
       clearInterval(this.idInterval);
-      $(".startGame").show();
-      $(".infoGame").show();
       $("#yourScore").show();
       $(".finalScore").html(`Your score was: ${Math.floor(this.score)}`);
     
